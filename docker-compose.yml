@@ -1,0 +1,49 @@
+services:
+  # Servidor Central
+  sqlserver_central:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver_central
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=mypass192837465!
+    ports:
+      - "1433:1433"
+    networks:
+      - sql_network
+
+  # Sucursal 1
+  sqlserver_sucursal1:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver_sucursal1
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=mypass192837465!
+    ports:
+      - "1434:1433"
+    networks:
+      - sql_network
+
+  # Sucursal 2
+  sqlserver_sucursal2:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver_sucursal2
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=mypass192837465!
+    ports:
+      - "1435:1433"
+    networks:
+      - sql_network
+
+  # Adminer para administrar los 3 servidores
+  # adminer:
+  #   image: adminer
+  #   container_name: adminer
+  #   ports:
+  #     - "8080:8080"
+  #   networks:
+  #     - sql_network
+
+networks:
+  sql_network:
+    driver: bridge

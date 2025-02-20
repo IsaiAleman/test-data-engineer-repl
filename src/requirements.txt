@@ -1,0 +1,4 @@
+apache-beam[gcp]
+pymssql
+google-cloud-bigquery
+sqlalchemy
